@@ -6,7 +6,7 @@
 <table class="table">
     <tr>
     {%for header in headers%}
-        <th>{{header}}</th>
+        <th>{{header|capfirst}}</th>
     {%endfor%}
     </tr>
     {%for item in articles_objects%}

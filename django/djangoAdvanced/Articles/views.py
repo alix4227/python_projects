@@ -30,7 +30,7 @@ class ArticlesListView(ListView):
         context["headers"] = [_("ID"),_("titre"), _("auteur"), _("créé le"), _("synopsis"), _("Cree il y a")]
         return context
 
-class ArticleCreateView(LoginRequiredMixin,CreateView):
+class ArticleCreateView(CreateView):
     
     model = Articles
     fields = ['title', 'synopsis', 'content']
@@ -39,6 +39,10 @@ class ArticleCreateView(LoginRequiredMixin,CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('login')
+        return super().dispatch(request, *args, **kwargs)
 
 
 class UserCreationView(CreateView):
