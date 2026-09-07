@@ -19,20 +19,20 @@ msgstr ""
 msgid "ID"
 msgstr "ID"
 
-msgid "titre"
-msgstr "titre"
+msgid "Title"
+msgstr "Titre"
 
-msgid "auteur"
-msgstr "auteur"
+msgid "Author"
+msgstr "Auteur"
 
-msgid "créé le"
-msgstr "créé le"
+msgid "Created at"
+msgstr "Créé le"
 
-msgid "synopsis"
-msgstr "synopsis"
+msgid "Synopsis"
+msgstr "Synopsis"
 
-msgid "Cree il y a"
-msgstr "Cree il y a"
+msgid "When"
+msgstr "Créé il y a"
 
 msgid "Share your writings"
 msgstr "Partagez vos écrits"
@@ -66,3 +66,9 @@ msgstr "Nom"
 
 msgid "Password"
 msgstr "Mot de Passe"
+
+msgid "Create"
+msgstr "Créer"
+
+msgid "Create an account"
+msgstr "Créer un compte"

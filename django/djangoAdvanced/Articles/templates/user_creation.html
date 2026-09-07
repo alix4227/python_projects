@@ -1,9 +1,9 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block title %}djangoAdvanced: Register{% endblock %}
-
 {% block content %}
 <div style="max-width: 400px; margin: 50px auto;">
-    <h2>Créer un compte</h2>
+    <h2>{% trans "Create an account" %}</h2>
     {% if form.errors %}
         <div style="color: red; margin-bottom: 1em;">
             {% for field in form %}
@@ -25,7 +25,7 @@
                 {{ field }}
             </div>
         {% endfor %}
-        <button type="submit">Créer</button>
+        <button type="submit">{% trans "Create" %}</button>
     </form>
 </div>
 {% endblock %}

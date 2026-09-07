@@ -7,8 +7,7 @@ from django.contrib.auth.views import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import *
 from .forms import *
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.utils import timezone, translation
+from django.utils import timezone
 from django.utils.translation import gettext as _
 from django.http import *
 
@@ -27,7 +26,7 @@ class ArticlesListView(ListView):
         for article in context["articles_objects"]:
             delta = now - article.created
             article.when = str(delta).split('.')[0]
-        context["headers"] = [_("ID"),_("titre"), _("auteur"), _("créé le"), _("synopsis"), _("Cree il y a")]
+        context["headers"] = [_("ID"),_("Title"), _("Author"), _("Created at"), _("Synopsis"), _("When")]
         return context
 
 class ArticleCreateView(CreateView):
@@ -130,7 +129,7 @@ class FavouriteCreateView(TemplateView):
         article = Articles.objects.get(pk=request.POST.get('article'))
         already_favourite = UserFavouriteArticle.objects.filter(user=request.user, article=article).exists()
         if already_favourite: 
-            return render(request, "favourite_already_exists.html", status=400)
+            return render(request, "favourite_already_exists.html", status=409)
         UserFavouriteArticle.objects.create(user=request.user, article=article)
         return redirect('favourites')
     def dispatch(self, request, *args, **kwargs):

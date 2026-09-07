@@ -63,4 +63,4 @@ class ArticlesModelTests(TestCase):
         article = Articles.objects.create(title='Test', author=user, synopsis="Test", content="Test")
         UserFavouriteArticle.objects.create(user=user, article=article)
         response = self.client.post(reverse("addFavourite", kwargs={'pk': article.id}), {'article': article.id})
-        self.assertEqual(response.status_code, 400, msg=f"Test add_Favourites avec login: Expected 400, got {response.status_code}")
+        self.assertEqual(response.status_code, 409, msg=f"Test add_Favourites avec login: Expected 409, got {response.status_code}")
