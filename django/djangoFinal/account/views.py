@@ -26,7 +26,7 @@ class Register(CreateView):
     success_url = reverse_lazy('account')
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            raise Http404
+            return redirect('account')
         return super().dispatch(request, *args, **kwargs)
 
 class Login(FormView):
@@ -41,7 +41,6 @@ class Login(FormView):
             payload = data.get('payload', {})
             user = authenticate(request, username=payload['username'], password=payload['password'])
             if user is not None:
-                print(user)
                 login(request, user)
                 return JsonResponse({'status': 'User logged!', 'username':user.username})
             return JsonResponse({'status': 'User not logged!'}, status=401)

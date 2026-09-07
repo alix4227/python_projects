@@ -1,0 +1,4 @@
+Django==5.2.15
+psycopg2-binary==2.9.12
+daphne==4.2.3
+channels==4.3.2

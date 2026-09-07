@@ -80,21 +80,26 @@
         dataType: "json",
         headers: {"X-CSRFToken": getCookie('csrftoken')},
         data: JSON.stringify({payload: payload}),
-        success: function(data){
-        console.log(data);
-        let logged = `<ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link">Logged as ${data.username}</a>
-            </li>
-            <li class="nav-item active">
-                <form id="form-logout" method="post">
-                    <button type="submit" class="btn btn-light">Logout</button>
-                </form>
-            </li>
-        </ul>`;
-        $('#form-login').closest('ul').replaceWith(logged);
-    },
-        error: (error) => console.log(error)
+        success: function(data) {
+            console.log(data);
+            let logged = `<ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link">Logged as ${data.username}</a>
+                </li>
+                <li class="nav-item active">
+                    <form id="form-logout" method="post">
+                        <button type="submit" class="btn btn-light">Logout</button>
+                    </form>
+                </li>
+            </ul>`;
+            $('.navbar').next('.alert-danger').remove();
+            $('#form-login').closest('ul').replaceWith(logged);
+        },
+        error: () => {
+            $('.navbar').next('.alert-danger').remove();
+            let not_logged = `<div class="alert alert-danger text-center">Username or Password invalid!</div>`;
+            $('.navbar').after(not_logged);
+        }
     });
 });
 

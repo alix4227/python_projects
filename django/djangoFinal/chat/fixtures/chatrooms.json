@@ -1,0 +1,26 @@
+[
+{
+  "model": "chat.chatroom",
+  "pk": 1,
+  "fields": {
+    "name": "Testons",
+    "members": []
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 2,
+  "fields": {
+    "name": "Skyblog",
+    "members": []
+  }
+},
+{
+  "model": "chat.chatroom",
+  "pk": 3,
+  "fields": {
+    "name": "Messenger",
+    "members": []
+  }
+}
+]
