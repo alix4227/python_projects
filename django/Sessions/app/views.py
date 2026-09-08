@@ -20,7 +20,7 @@ def downvote_tip(request):
     if request.POST.get("downvote"):
         tip_id = request.POST.get("downvote")
         tip = Tip.objects.get(id=tip_id)
-        if request.user.has_perm('app.can_downvote_tip') or request.user == tip.user or request.user.reputation >= 15:
+        if request.user.has_perm('app.can_downvote_tip pour correction') or request.user == tip.user or request.user.reputation >= 15:
             if not request.user in tip.upvote.all():
                 if not request.user in tip.downvote.all():
                     tip.downvote.add(request.user)
@@ -74,7 +74,8 @@ def index(request):
                 reputation += ((item.upvote.count() * 5) + (item.downvote.count() * -2))
         login = True
         request.user.reputation = reputation
-        return render(request, 'ex/index.html', {"username": request.user.username, "login": login, "tip": tip, "reputation": request.user.reputation})
+        tipform = TipForm()
+        return render(request, 'ex/index.html', {"username": request.user.username, "login": login, "tip": tip, "reputation": request.user.reputation, "tipform": tipform})
     request.session.clear_expired()
     request.session.set_expiry(42)
     if 'username' not in request.session:

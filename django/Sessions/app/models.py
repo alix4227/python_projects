@@ -17,5 +17,5 @@ class Tip(models.Model):
     class Meta:
         db_table = "Tip"
         permissions = [
-        ('can_downvote_tip', 'Can downvote tip'),
+        ('can_downvote_tip pour correction', 'Can downvote tip pour correction'),
 ]

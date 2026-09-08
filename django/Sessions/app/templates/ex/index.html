@@ -87,8 +87,9 @@
 <form action="{% url 'index' %}" method="post" class="form">
       {% csrf_token %}
   <div class="form">
-    <label for="contenu">Entrez votre tip&nbsp;: </label>
-    <textarea class="form-control" aria-label="With textarea" name="contenu" id="contenu" required></textarea>
+    <label for="contenu">Entrez votre tip&nbsp;: </label> 
+    <!-- <textarea class="form-control" aria-label="With textarea" name="contenu" id="contenu" required></textarea> -->
+    {{ tipform.contenu }}
   </div>
   <div class="form">
     <input type="submit" class="btn btn-primary" value="Submit"/>
