@@ -121,7 +121,7 @@ class Favourites(ListView):
             return redirect('login')
         return super().dispatch(request, *args, **kwargs)
 
-class FavouriteCreateView(TemplateView):
+class FavouriteCreateView(CreateView):
     def get(self, request, *args, **kwargs):
         pk = kwargs.get('pk')
         return redirect('detail', pk=pk)

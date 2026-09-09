@@ -16,9 +16,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 
 
-# def handler404(request, exception):
-#    return render(request, '404handler.html')
-
 class Register(CreateView):
     model = User
     form_class = UserCreationForm

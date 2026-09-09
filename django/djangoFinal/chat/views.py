@@ -9,6 +9,9 @@ def index(request):
 
 def room(request, room_name):
     if request.user.is_authenticated:
+        chatroom = Chatroom.objects.filter(name=room_name).first()
+        if not chatroom:
+            return redirect("index")
         return render(request, "chat/room.html", {"room_name": room_name})
     return redirect("account")
 
